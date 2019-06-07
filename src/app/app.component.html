@@ -4,10 +4,37 @@
       <img class="navigation__logo" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
       <h1 class="navigation__title">Angular Material <span>Dashboard</span></h1>
     </div>
-    <button mat-button>Home</button>
+
+    <mat-nav-list class="navigation__list">
+      <mat-list-item><mat-icon matListIcon>dashboard</mat-icon>
+        <a matLine routerLink="">Dashboard</a>
+      </mat-list-item>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [expandedHeight]="'48px'">
+            <mat-icon>web</mat-icon>
+            <span>Strony</span>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <mat-list-item>
+              <a matLine [routerLink]="'pages'">Wszystkie strony</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content class="main__content">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2>{{title}}</h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
