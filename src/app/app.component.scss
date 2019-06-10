@@ -4,10 +4,25 @@
   right: 0;
   bottom: 0;
   left: 0;
+
+  &__toolbar {
+    height: auto;
+    padding: 40px 60px 0;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 100;
+  }
+
+  &__content {
+    padding: 40px 60px;
+  }
 }
 
 .navigation {
   width: 300px;
+  border: none;
 
   &__header {
     display: flex;
@@ -38,9 +53,31 @@
   }
 
   &__list {
+    mat-list-item {
+      .mat-line {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+
+    > mat-list-item {
+      .mat-line {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+    }
+
     /deep/ mat-expansion-panel {
-      box-shadow: none;
+      box-shadow: none !important;
       margin: 0;
+      background: transparent;
 
       mat-expansion-panel-header {
         padding: 0 16px;
@@ -54,19 +91,21 @@
           }
 
           span {
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
           }
         }
       }
 
       mat-nav-list {
         padding: 0;
-        font-size: 14px;
       }
 
       mat-list-item {
-        font-size: 14px;
+        font-size: 13px;
         text-indent: 48px;
+        height: 36px;
       }
 
       .mat-expansion-panel-body {

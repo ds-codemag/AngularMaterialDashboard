@@ -12,7 +12,7 @@
 
       <mat-accordion>
         <mat-expansion-panel>
-          <mat-expansion-panel-header [expandedHeight]="'48px'">
+          <mat-expansion-panel-header [collapsedHeight]="'56px'" [expandedHeight]="'56px'">
             <mat-icon>web</mat-icon>
             <span>Strony</span>
           </mat-expansion-panel-header>
@@ -28,14 +28,26 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content class="main__content">
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <h2>{{title}}</h2>
-      </mat-toolbar-row>
+  <mat-sidenav-content class="main__container">
+    <mat-toolbar class="main__toolbar">
+      <h2 class="main__title">{{title}}</h2>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="switchTheme()">{{darkTheme ? 'Jasny motyw' : 'Ciemny motyw'}}</button>
+        <button mat-menu-item>Ustawienia konta</button>
+        <button mat-menu-item>Wyloguj się</button>
+      </mat-menu>
     </mat-toolbar>
 
-    <router-outlet></router-outlet>
+    <div class="main__content">
+      <router-outlet></router-outlet>
+    </div>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 
