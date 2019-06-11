@@ -1,0 +1,21 @@
+<form class=form [formGroup]="loginForm" (ngSubmit)="login()">
+  <mat-form-field class="form__item form__item--w100">
+    <input matInput type="email" placeholder="E-mail" formControlName="login">
+    <mat-error *ngIf="loginForm.get('login').hasError('email') && !loginForm.get('login').hasError('required')">
+      Podaj poprawny adres email
+    </mat-error>
+    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      Email jest <strong>wymagany</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form__item form__item--w100">
+    <input matInput type="password" placeholder="Hasło" formControlName="password">
+    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      Hasło jest <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" color="primary" [disabled]="loginForm.invalid">Zaloguj</button>
+
+</form>

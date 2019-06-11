@@ -5,7 +5,7 @@
 // ----------------------------------------------------------------- Light theme
 $app-light-primary: mat-palette($mat-red, 700);
 $app-light-accent:  mat-palette($mat-red, 300, 200, 400);
-$app-light-warn:    mat-palette($mat-red);
+$app-light-warn:    mat-palette($mat-red, A400);
 
 $custom-light-theme-background: (
   status-bar: map_get($mat-grey, 300),
@@ -82,3 +82,11 @@ $app-dark-theme: custom-dark-theme($app-dark-primary, $app-dark-accent, $app-dar
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .spacer { flex: 1 1 auto; }
+
+.form {
+  &__item {
+    &--w100 {
+      width: 100%;
+    }
+  }
+}
