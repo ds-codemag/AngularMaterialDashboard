@@ -8,10 +8,6 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard],
@@ -20,7 +16,7 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         data: {
-          title: 'Home'
+          title: 'Dashboard'
         }
       },
       {
@@ -31,7 +27,12 @@ const routes: Routes = [
         }
       }
     ]
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -2,32 +2,38 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
+import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthService {
 
-  user: User;
+  authState: Observable<User | null> = this.fireAuth.authState;
 
   constructor(
-    private angularFireAuth: AngularFireAuth,
-    private router: Router
-  ) {
-    angularFireAuth.authState.subscribe(user => {
-      this.user = user;
-    });
-  }
+    private fireAuth: AngularFireAuth,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   login(login: string, password: string) {
-    this.angularFireAuth.auth.signInWithEmailAndPassword(login, password).then(value => {
-      console.log(value);
+    this.fireAuth.auth.signInWithEmailAndPassword(login, password).then(value => {
       this.router.navigate(['']);
     }).catch(error => {
-      console.log(error);
+      this.snackBar.open(
+        error.message,
+        null,
+        {
+          duration: 5000,
+          verticalPosition: 'top',
+          panelClass: 'error-snackbar'
+        }
+      );
     })
   }
 
   logout() {
-    this.angularFireAuth.auth.signOut().then(value => {
+    this.fireAuth.auth.signOut().then(() => {
       this.router.navigate(['/login']);
     });
   }

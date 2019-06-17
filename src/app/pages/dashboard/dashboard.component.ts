@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivationEnd, ActivatedRoute } from '@angular/router';
+import { Router, ActivationEnd, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,11 +14,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private authService: AuthService
-  ) { }
-
-  ngOnInit() {
-    this.activatedRoute.url.subscribe(() => {
+  ) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
       this.title = this.activatedRoute.snapshot.firstChild.data.title;
     });
 
@@ -26,6 +28,8 @@ export class DashboardComponent implements OnInit {
       this.darkTheme = true;
     }
   }
+
+  ngOnInit() {}
 
   switchTheme() {
     if (this.darkTheme) {
