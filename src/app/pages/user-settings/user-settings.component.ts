@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-user-settings',
@@ -9,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserSettingsComponent implements OnInit {
 
+  user: User;
   name: string;
   email: string;
   photoUrl: string;
@@ -27,9 +29,15 @@ export class UserSettingsComponent implements OnInit {
   });
 
   changePasswordForm = new FormGroup({
-    oldPsw: new FormControl(''),
-    newPsw: new FormControl(''),
-    repPesw: new FormControl('')
+    // oldPsw: new FormControl(''),
+    newPsw: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
+    repPsw: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ])
   });
 
   constructor(
@@ -40,21 +48,29 @@ export class UserSettingsComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       if (user != null) {
 
-        this.userSettingsForm.patchValue({
-          name: user.displayName,
-          email: user.email
-        });
-
-        console.log(user.displayName);
-        console.log(user.email);
-        console.log(user.photoURL);
-        console.log(user.emailVerified);
-
+        this.user = user;
         this.name = user.displayName;
         this.email = user.email;
         this.photoUrl = user.photoURL;
         this.emailVerified = user.emailVerified;
+
+        this.userSettingsForm.patchValue({
+          name: user.displayName,
+          email: user.email
+        });
       }
     });
+  }
+
+  changePsw() {
+    if (this.changePasswordForm.get('newPsw').value === this.changePasswordForm.get('repPsw').value) {
+      this.user.updatePassword(this.changePasswordForm.get('newPsw').value).then(() => {
+        console.log('success');
+      }).catch(error => {
+        console.log(error);
+      });
+    } else {
+      console.log('error');
+    }
   }
 }

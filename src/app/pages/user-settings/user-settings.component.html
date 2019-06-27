@@ -47,17 +47,29 @@
             <button mat-button color="primary" type="submit">Zmień hasło</button>
           </mat-expansion-panel-header>
 
-          <form [formGroup]="changePasswordForm">
-            <mat-form-field class="fw-field">
+          <form [formGroup]="changePasswordForm" (ngSubmit)="changePsw()">
+            <!-- <mat-form-field class="fw-field">
               <input matInput type="password" placeholder="Poprzednie hasło" formControlName="oldPsw">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-form-field class="fw-field">
               <input matInput type="password" placeholder="Nowe hasło" formControlName="newPsw">
+              <mat-error *ngIf="changePasswordForm.get('newPsw').hasError('minlength') && !changePasswordForm.get('newPsw').hasError('required')">
+                Hasło musi zaiwerać conajmniej 8 znaków
+              </mat-error>
+              <mat-error *ngIf="changePasswordForm.get('newPsw').hasError('required')">
+                Hasło jest <strong>wymagane</strong>
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="fw-field">
-              <input matInput type="password" placeholder="Powtórz nowe hasło" formControlName="repPesw">
+              <input matInput type="password" placeholder="Powtórz nowe hasło" formControlName="repPsw">
+              <mat-error *ngIf="changePasswordForm.get('repPsw').hasError('minlength') && !changePasswordForm.get('repPsw').hasError('required')">
+                Hasło musi zaiwerać conajmniej 8 znaków
+              </mat-error>
+              <mat-error *ngIf="changePasswordForm.get('repPsw').hasError('required')">
+                Hasło jest <strong>wymagane</strong>
+              </mat-error>
             </mat-form-field>
 
             <button mat-raised-button color="primary" type="submit">Zmień hasło</button>
