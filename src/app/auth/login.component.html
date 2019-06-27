@@ -2,7 +2,7 @@
   <form class=form [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field class="form__item form__item--w100">
       <input matInput type="email" placeholder="E-mail" formControlName="login">
-      <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">
         Email jest <strong>wymagany</strong>
       </mat-error>
     </mat-form-field>

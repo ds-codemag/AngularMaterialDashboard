@@ -40,7 +40,7 @@
       </button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <button mat-menu-item (click)="switchTheme()">{{darkTheme ? 'Jasny motyw' : 'Ciemny motyw'}}</button>
-        <button mat-menu-item>Ustawienia konta</button>
+        <button mat-menu-item [routerLink]="'/user-settings'">Ustawienia konta</button>
         <button mat-menu-item (click)="logout()">Wyloguj się</button>
       </mat-menu>
     </mat-toolbar>

@@ -1,0 +1,47 @@
+.fw-field {
+  width: 100%;
+}
+
+.avatar {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+
+  img {
+    display: block;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+  }
+
+  label {
+    display: block;
+  }
+}
+
+.change-password-panel {
+  box-shadow: none !important;
+  background: none !important;
+
+  .mat-expansion-panel-header {
+    display: inline;
+    padding: 0;
+
+    &:hover {
+      background: none !important;
+    }
+
+    /deep/ .mat-content {
+      display: inline;
+    }
+
+    /deep/ .mat-expansion-indicator {
+      display: none;
+    }
+  }
+
+  /deep/ .mat-expansion-panel-body {
+    padding: 0 16px;
+  }
+}

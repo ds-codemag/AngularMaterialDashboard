@@ -17,9 +17,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       this.title = this.activatedRoute.snapshot.firstChild.data.title;
     });
 

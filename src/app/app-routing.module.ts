@@ -5,6 +5,7 @@ import { PagesComponent } from './pages/pages/pages.component';
 import { LoginComponent } from './auth/login.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { HomeComponent } from './pages/home/home.component';
+import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,13 @@ const routes: Routes = [
         component: HomeComponent,
         data: {
           title: 'Dashboard'
+        }
+      },
+      {
+        path: 'user-settings',
+        component: UserSettingsComponent,
+        data: {
+          title: 'Ustawienia użytkownika'
         }
       },
       {

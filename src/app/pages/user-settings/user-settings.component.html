@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <form [formGroup]="userSettingsForm" [ngStyle]="{'margin': '0 0 40px'}">
+
+        <div class="avatar">
+          <img src="{{photoUrl ? photoUrl : 'assets/images/avatar_placeholder.png'}}" alt="Avatar">
+
+          <label>
+            <a mat-button color="primary"><strong>{{photoUrl ? 'Zmień zdjęcie' : 'Dodaj zdjęcie' }}</strong></a>
+            <input type="file" formControlName="avatar" hidden>
+          </label>
+        </div>
+
+        <mat-form-field class="fw-field">
+          <input matInput type="text" placeholder="Nazwa użytkownika" formControlName="name">
+          <mat-error *ngIf="userSettingsForm.get('name').hasError('required')">
+            Nazwa użytkownika jest <strong>wymagana</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fw-field" [ngStyle]="{'margin-bottom': '20px'}">
+          <input matInput type="email" placeholder="Email" formControlName="email">
+          <mat-hint align="start" *ngIf="emailVerified"><button mat-raised-button color="primary">Zweryfikowano!</button></mat-hint>
+          <mat-hint align="start" *ngIf="!emailVerified">Niezweryfikowano!</mat-hint>
+          <mat-error *ngIf="userSettingsForm.get('email').hasError('email') && !userSettingsForm.get('email').hasError('required')">
+            Proszę wprowadzić poprawny email
+          </mat-error>
+          <mat-error *ngIf="userSettingsForm.get('email').hasError('required')">
+            Email jest <strong>wymagany</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Zapisz zmiany</button>
+
+      </form>
+    </div>
+
+    <div class="col-3">
+      <div *ngIf="!emailVerified">
+        <button mat-button color="primary" type="submit">Zweryfikuj email</button>
+      </div>
+
+      <div>
+        <mat-expansion-panel class="change-password-panel">
+          <mat-expansion-panel-header collapsedHeight="36px" expandedHeight="36px">
+            <button mat-button color="primary" type="submit">Zmień hasło</button>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="changePasswordForm">
+            <mat-form-field class="fw-field">
+              <input matInput type="password" placeholder="Poprzednie hasło" formControlName="oldPsw">
+            </mat-form-field>
+
+            <mat-form-field class="fw-field">
+              <input matInput type="password" placeholder="Nowe hasło" formControlName="newPsw">
+            </mat-form-field>
+
+            <mat-form-field class="fw-field">
+              <input matInput type="password" placeholder="Powtórz nowe hasło" formControlName="repPesw">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Zmień hasło</button>
+          </form>
+        </mat-expansion-panel>
+      </div>
+    </div>
+  </div>
+</div>

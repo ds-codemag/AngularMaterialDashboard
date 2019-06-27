@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages/pages.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const firebase = {
   apiKey: 'AIzaSyBRtkBMYlyMW7zGiHa2l-oC7sNdil2gsTw',
@@ -26,6 +28,7 @@ const firebase = {
   declarations: [
     AppComponent,
     DashboardComponent,
+    UserSettingsComponent,
     HomeComponent,
     PagesComponent
   ],
@@ -38,6 +41,7 @@ const firebase = {
     AuthModule,
     MaterialModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
