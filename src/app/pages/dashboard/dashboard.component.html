@@ -8,7 +8,7 @@
     <mat-nav-list class="navigation__list">
       <mat-list-item>
         <mat-icon matListIcon>dashboard</mat-icon>
-        <a matLine routerLink="">Dashboard</a>
+        <a matLine [routerLink]="''">Dashboard</a>
       </mat-list-item>
 
       <mat-accordion>
@@ -26,6 +26,11 @@
         </mat-expansion-panel>
 
       </mat-accordion>
+
+      <mat-list-item>
+        <mat-icon matListIcon>perm_media</mat-icon>
+        <a matLine [routerLink]="'/media'">Media</a>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 

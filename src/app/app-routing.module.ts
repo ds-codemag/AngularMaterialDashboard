@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/login.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { HomeComponent } from './pages/home/home.component';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
+import { MediaComponent } from './pages/media/media.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,13 @@ const routes: Routes = [
         component: PagesComponent,
         data: {
           title: 'Strony'
+        }
+      },
+      {
+        path: 'media',
+        component: MediaComponent,
+        data: {
+          title: 'Media'
         }
       }
     ]

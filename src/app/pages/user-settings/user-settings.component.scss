@@ -1,5 +1,7 @@
-.fw-field {
-  width: 100%;
+.field {
+  &--fw {
+    width: 100%;
+  }
 }
 
 .avatar {

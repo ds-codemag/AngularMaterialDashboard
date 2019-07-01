@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-      <form [formGroup]="userSettingsForm" [ngStyle]="{'margin': '0 0 40px'}">
+      <form [formGroup]="userSettingsForm" (ngSubmit)="changeUserData()">
 
         <div class="avatar">
           <img src="{{photoUrl ? photoUrl : 'assets/images/avatar_placeholder.png'}}" alt="Avatar">
@@ -12,17 +12,17 @@
           </label>
         </div>
 
-        <mat-form-field class="fw-field">
+        <mat-form-field class="field field--fw">
           <input matInput type="text" placeholder="Nazwa użytkownika" formControlName="name">
           <mat-error *ngIf="userSettingsForm.get('name').hasError('required')">
             Nazwa użytkownika jest <strong>wymagana</strong>
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="fw-field" [ngStyle]="{'margin-bottom': '20px'}">
-          <input matInput type="email" placeholder="Email" formControlName="email">
-          <mat-hint align="start" *ngIf="emailVerified"><button mat-raised-button color="primary">Zweryfikowano!</button></mat-hint>
-          <mat-hint align="start" *ngIf="!emailVerified">Niezweryfikowano!</mat-hint>
+        <mat-form-field class="field field--fw" [ngStyle]="{'margin-bottom': '20px'}">
+          <input matInput type="email" placeholder="Email / Login" formControlName="email">
+          <mat-hint align="end" *ngIf="emailVerified">Zweryfikowano!</mat-hint>
+          <mat-hint align="end" *ngIf="!emailVerified">Niezweryfikowano!</mat-hint>
           <mat-error *ngIf="userSettingsForm.get('email').hasError('email') && !userSettingsForm.get('email').hasError('required')">
             Proszę wprowadzić poprawny email
           </mat-error>
@@ -38,7 +38,7 @@
 
     <div class="col-3">
       <div *ngIf="!emailVerified">
-        <button mat-button color="primary" type="submit">Zweryfikuj email</button>
+        <button mat-button color="primary" type="submit" (click)="verifyEmail()">Zweryfikuj email</button>
       </div>
 
       <div>
@@ -48,11 +48,7 @@
           </mat-expansion-panel-header>
 
           <form [formGroup]="changePasswordForm" (ngSubmit)="changePsw()">
-            <!-- <mat-form-field class="fw-field">
-              <input matInput type="password" placeholder="Poprzednie hasło" formControlName="oldPsw">
-            </mat-form-field> -->
-
-            <mat-form-field class="fw-field">
+            <mat-form-field class="field field--fw">
               <input matInput type="password" placeholder="Nowe hasło" formControlName="newPsw">
               <mat-error *ngIf="changePasswordForm.get('newPsw').hasError('minlength') && !changePasswordForm.get('newPsw').hasError('required')">
                 Hasło musi zaiwerać conajmniej 8 znaków
@@ -62,8 +58,11 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="fw-field">
+            <mat-form-field class="field field--fw" [ngStyle]="{'margin-bottom': '20px'}">
               <input matInput type="password" placeholder="Powtórz nowe hasło" formControlName="repPsw">
+              <mat-error *ngIf="changePasswordForm.get('repPsw').hasError('notSame') && !changePasswordForm.get('repPsw').hasError('minlength') && !changePasswordForm.get('repPsw').hasError('required')">
+                Hasła muszą być indentyczne
+              </mat-error>
               <mat-error *ngIf="changePasswordForm.get('repPsw').hasError('minlength') && !changePasswordForm.get('repPsw').hasError('required')">
                 Hasło musi zaiwerać conajmniej 8 znaków
               </mat-error>

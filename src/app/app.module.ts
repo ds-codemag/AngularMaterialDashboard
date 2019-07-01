@@ -7,13 +7,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UploadModule } from './upload/upload.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages/pages.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MediaComponent } from './pages/media/media.component';
 
 const firebase = {
   apiKey: 'AIzaSyBRtkBMYlyMW7zGiHa2l-oC7sNdil2gsTw',
@@ -30,7 +32,8 @@ const firebase = {
     DashboardComponent,
     UserSettingsComponent,
     HomeComponent,
-    PagesComponent
+    PagesComponent,
+    MediaComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ const firebase = {
     AuthModule,
     MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
