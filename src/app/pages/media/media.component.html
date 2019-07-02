@@ -1,1 +1,5 @@
 <app-upload-form></app-upload-form>
+
+<div class="library">
+  <img *ngFor="let img of images" src="{{img.url}}" alt="{img.name}">
+</div>

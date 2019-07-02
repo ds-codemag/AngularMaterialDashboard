@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UploadService } from './upload.service';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   ],
   imports: [
     CommonModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   exports: [
     UploadFormComponent

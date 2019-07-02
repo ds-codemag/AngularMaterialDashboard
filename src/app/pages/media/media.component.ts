@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Component({
   selector: 'app-media',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediaComponent implements OnInit {
 
-  constructor() { }
+  images = [];
+
+  constructor(
+    private fireDatabase: AngularFireDatabase
+  ) {
+    this.fireDatabase.database.ref('uploads').on('value', snapshot => {
+      let snapshotImages = [];
+      for(let image in snapshot.val()) {
+        snapshotImages.push(snapshot.val()[image]);
+      }
+    });
+  }
 
   ngOnInit() {
+    console.log(this.images)
   }
 
 }

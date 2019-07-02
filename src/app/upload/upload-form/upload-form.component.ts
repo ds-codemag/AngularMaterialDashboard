@@ -11,7 +11,6 @@ import { UploadService } from '../upload.service';
 export class UploadFormComponent implements OnInit {
 
   selectedFiles: FileList;
-  currentUpload: Upload;
   progress: any;
 
   constructor(
@@ -29,17 +28,13 @@ export class UploadFormComponent implements OnInit {
   }
 
   uploadSingle() {
-    const file = this.selectedFiles.item(0);
-    this.currentUpload = new Upload(file);
-    this.uploadService.pushUpload(this.currentUpload);
+    this.uploadService.pushUpload(this.selectedFiles.item(0));
   }
 
   uploadMulti() {
-    const files = this.selectedFiles;
     // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < files.length; i++) {
-      this.currentUpload = new Upload(files[i]);
-      this.uploadService.pushUpload(this.currentUpload);
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      this.uploadService.pushUpload(this.selectedFiles[i]);
     }
   }
 }

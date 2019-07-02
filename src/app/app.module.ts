@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
@@ -39,8 +39,8 @@ const firebase = {
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     AuthModule,
     MaterialModule,
     AppRoutingModule,
