@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Upload } from '../upload.class';
-import { UploadService } from '../upload.service';
+import { MatDialog } from '@angular/material';
+import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 
 @Component({
   selector: 'app-upload-form',
@@ -10,31 +10,13 @@ import { UploadService } from '../upload.service';
 
 export class UploadFormComponent implements OnInit {
 
-  selectedFiles: FileList;
-  progress: any;
-
   constructor(
-    private uploadService: UploadService
-  ) { }
+    private dialog: MatDialog
+  ) {}
 
-  ngOnInit() {
-    this.uploadService.progress.subscribe(progress => {
-      this.progress = progress;
-    })
-  }
+  ngOnInit() {}
 
-  detectFiles(event) {
-    this.selectedFiles = event.target.files;
-  }
-
-  uploadSingle() {
-    this.uploadService.pushUpload(this.selectedFiles.item(0));
-  }
-
-  uploadMulti() {
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.uploadService.pushUpload(this.selectedFiles[i]);
-    }
+  openDialog() {
+    this.dialog.open(UploadDialogComponent);
   }
 }

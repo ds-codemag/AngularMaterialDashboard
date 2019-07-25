@@ -1,28 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { MediaService } from 'src/app/services/media.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss']
 })
-export class MediaComponent implements OnInit {
+export class MediaComponent implements OnInit, OnDestroy {
 
   images = [];
 
+  imagesSubscription: Subscription;
+
   constructor(
-    private fireDatabase: AngularFireDatabase
-  ) {
-    this.fireDatabase.database.ref('uploads').on('value', snapshot => {
-      let snapshotImages = [];
-      for(let image in snapshot.val()) {
-        snapshotImages.push(snapshot.val()[image]);
-      }
+    private mediaService: MediaService
+  ) {}
+
+  ngOnInit() {
+    this.imagesSubscription = this.mediaService.allImages.subscribe(images => {
+      this.images = images;
     });
   }
 
-  ngOnInit() {
-    console.log(this.images)
+  ngOnDestroy() {
+    this.imagesSubscription.unsubscribe();
   }
-
 }

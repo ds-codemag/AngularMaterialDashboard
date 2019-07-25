@@ -1,12 +1,14 @@
 export class Upload {
 
+  displayedName: string;
   name: string;
   type: string;
   size: number;
   url: string;
   createdAt: Date;
 
-  constructor(name: string, type: string, size: number, url: string) {
+  constructor(displayedName: string, name: string, type: string, size: number, url: string) {
+    this.displayedName = displayedName;
     this.name = name;
     this.type = type;
     this.size = size;

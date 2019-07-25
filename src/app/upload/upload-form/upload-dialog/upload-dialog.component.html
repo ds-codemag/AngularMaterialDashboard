@@ -1,0 +1,14 @@
+<label class="file-dropdown">
+  <input type="file" (change)="detectFiles($event)">
+  <span>{{text}}</span>
+</label>
+
+<div class="buttons-group buttons-group--right-align">
+  <button mat-flat-button color="primary" type="button" (click)="cancelUpload()">
+    Anuluj
+  </button>
+
+  <button mat-flat-button color="primary" type="button" (click)="upload()">
+    Dodaj plik
+  </button>
+</div>

@@ -3,6 +3,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Upload } from './upload.class';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { MatDialogRef } from '@angular/material';
+import { UploadDialogComponent } from './upload-form/upload-dialog/upload-dialog.component';
 
 @Injectable()
 export class UploadService {
@@ -16,7 +18,7 @@ export class UploadService {
     private fireDatabase: AngularFireDatabase
   ) {}
 
-  pushUpload(file: File) {
+  pushUpload(file: File, dialogRef: MatDialogRef<UploadDialogComponent>) {
     const storageRef = this.fireStorage.storage.ref();
     const uploadTask = storageRef.child(`${this.basePath}/${file.name}`).put(file);
 
@@ -28,10 +30,13 @@ export class UploadService {
       uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
         this.fireDatabase.database.ref('uploads/').push(new Upload(
           file.name,
+          file.name,
           file.type,
           file.size,
           downloadURL
         ));
+      }).then(() => {
+        dialogRef.close();
       });
     });
   }

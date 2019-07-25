@@ -16,6 +16,7 @@ import { PagesComponent } from './pages/pages/pages.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { MediaComponent } from './pages/media/media.component';
+import { MediaService } from './services/media.service';
 
 const firebase = {
   apiKey: 'AIzaSyBRtkBMYlyMW7zGiHa2l-oC7sNdil2gsTw',
@@ -47,7 +48,11 @@ const firebase = {
     ReactiveFormsModule,
     UploadModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MediaService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,5 +1,10 @@
 <app-upload-form></app-upload-form>
 
-<div class="library">
-  <img *ngFor="let img of images" src="{{img.url}}" alt="{img.name}">
+<div class="container-fluid library library--grid">
+  <figure *ngFor="let img of images">
+    <div>
+      <img src="{{img.url}}" alt="{{img.displayedName}}">
+    </div>
+    <figcaption>{{img.displayedName}}</figcaption>
+  </figure>
 </div>
