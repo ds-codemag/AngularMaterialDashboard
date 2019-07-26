@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 
@@ -8,13 +8,11 @@ import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
   styleUrls: ['./upload-form.component.scss']
 })
 
-export class UploadFormComponent implements OnInit {
+export class UploadFormComponent {
 
   constructor(
     private dialog: MatDialog
   ) {}
-
-  ngOnInit() {}
 
   openDialog() {
     this.dialog.open(UploadDialogComponent);

@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
 import { UploadService } from '../../upload.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-upload-dialog',
@@ -15,7 +14,8 @@ export class UploadDialogComponent implements OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnDestroy() {
@@ -23,8 +23,13 @@ export class UploadDialogComponent implements OnDestroy {
   }
 
   detectFiles(event: any) {
-    this.selectedFiles = event.target.files;
-    this.text = this.selectedFiles.length ? `Selected file: ${this.selectedFiles[0].name}` : 'Choose a file or drag it here';
+    if (event.target.files.length) {
+      this.selectedFiles = event.target.files;
+      this.text = this.selectedFiles[0].name;
+    } else {
+      this.selectedFiles = null;
+      this.text = 'Choose a file or drag it here';
+    }
   }
 
   upload() {

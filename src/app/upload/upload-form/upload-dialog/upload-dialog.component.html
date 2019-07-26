@@ -4,11 +4,11 @@
 </label>
 
 <div class="buttons-group buttons-group--right-align">
-  <button mat-flat-button color="primary" type="button" (click)="cancelUpload()">
-    Anuluj
+  <button mat-flat-button color="primary" type="button" [disabled]="!selectedFiles" (click)="upload()">
+    Dodaj plik
   </button>
 
-  <button mat-flat-button color="primary" type="button" (click)="upload()">
-    Dodaj plik
+  <button mat-flat-button color="primary" type="button" (click)="cancelUpload()">
+    Anuluj
   </button>
 </div>
