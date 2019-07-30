@@ -1,0 +1,8 @@
+<div class="library container-fluid">
+  <figure *ngFor="let file of files">
+    <div>
+      <img src="{{file.url}}" alt="{{file.name}}">
+    </div>
+    <figcaption>{{file.name}}</figcaption>
+  </figure>
+</div>

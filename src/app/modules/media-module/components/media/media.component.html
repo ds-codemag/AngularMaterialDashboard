@@ -1,0 +1,5 @@
+<button mat-fab color="primary" class="upload-btn" aria-label="Upload" (click)="openDialog()">
+  <mat-icon>cloud_upload</mat-icon>
+</button>
+
+<app-media-grid-view *ngIf="files.length" [files]="files"></app-media-grid-view>

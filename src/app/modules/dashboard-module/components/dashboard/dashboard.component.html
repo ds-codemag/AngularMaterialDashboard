@@ -1,0 +1,76 @@
+<mat-sidenav-container class="main">
+  <mat-sidenav #sidenav mode="side" class="navigation" opened>
+    <div class="navigation__header">
+      <img class="navigation__logo" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+      <h1 class="navigation__title">Angular Material <span>Dashboard</span></h1>
+    </div>
+
+    <mat-nav-list class="navigation__list">
+      <mat-list-item>
+        <mat-icon matListIcon>dashboard</mat-icon>
+        <a matLine [routerLink]="''">Dashboard</a>
+      </mat-list-item>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'56px'" [expandedHeight]="'56px'">
+            <mat-icon>web</mat-icon>
+            <span>Strony</span>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <mat-list-item>
+              <a matLine [routerLink]="'/pages'">Wszystkie strony</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'56px'" [expandedHeight]="'56px'">
+            <mat-icon>folder</mat-icon>
+            <span>Media</span>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <mat-list-item>
+              <a matLine [routerLink]="['/media', 'images']">Obrazy</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a matLine [routerLink]="['/media', 'audio']">Audio</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a matLine [routerLink]="['/media', 'video']">Wideo</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a matLine [routerLink]="['/media', 'files']">Pliki</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main__container">
+    <mat-toolbar class="main__toolbar">
+      <h2 class="main__title">{{title}}</h2>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="switchTheme()">{{darkTheme ? 'Jasny motyw' : 'Ciemny motyw'}}</button>
+        <button mat-menu-item [routerLink]="'/user-settings'">Ustawienia konta</button>
+        <button mat-menu-item (click)="logout()">Wyloguj się</button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <div class="main__content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

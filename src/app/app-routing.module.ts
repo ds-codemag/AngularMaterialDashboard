@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { PagesComponent } from './pages/pages/pages.component';
-import { LoginComponent } from './auth/login.component';
-import { AuthGuard } from './auth/auth-guard.service';
-import { HomeComponent } from './pages/home/home.component';
-import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
-import { MediaComponent } from './pages/media/media.component';
+import { AuthGuardService } from './auth/services/auth-guard/auth-guard.service';
+import { LoginComponent } from './auth/components/login.component';
+import { DashboardComponent } from './modules/dashboard-module/components/dashboard/dashboard.component';
+import { UserSettingsComponent } from './modules/user-module/components/user-settings/user-settings.component';
+import { HomeComponent } from './modules/home-module/components/home/home.component';
+import { PagesComponent } from './modules/pages-module/components/pages/pages.component';
+import { MediaComponent } from './modules/media-module/components/media/media.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardService],
     children: [
       {
         path: '',
@@ -36,7 +36,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'media',
+        path: 'media/:type',
         component: MediaComponent,
         data: {
           title: 'Media'

@@ -1,23 +1,21 @@
+// Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UploadModule } from './upload/upload.module';
+import { DashboardModule } from './modules/dashboard-module/dashboard.module';
+import { UserModule } from './modules/user-module/user.module';
+import { HomeModule } from './modules/home-module/home.module';
+import { PagesModule } from './modules/pages-module/pages.module';
+import { MediaModule } from './modules/media-module/media.module';
 
+// Components
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { PagesComponent } from './pages/pages/pages.component';
-import { HomeComponent } from './pages/home/home.component';
-import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
-import { MediaComponent } from './pages/media/media.component';
-import { MediaService } from './services/media.service';
 
+// Firebase configuration
 const firebase = {
   apiKey: 'AIzaSyBRtkBMYlyMW7zGiHa2l-oC7sNdil2gsTw',
   authDomain: 'ng-material-dashboard.firebaseapp.com',
@@ -25,32 +23,25 @@ const firebase = {
   projectId: 'ng-material-dashboard',
   storageBucket: 'ng-material-dashboard.appspot.com',
   messagingSenderId: '1091096725862'
-}
+};
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DashboardComponent,
-    UserSettingsComponent,
-    HomeComponent,
-    PagesComponent,
-    MediaComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebase),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     AuthModule,
-    MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    UploadModule
+    DashboardModule,
+    UserModule,
+    HomeModule,
+    PagesModule,
+    MediaModule
   ],
-  providers: [
-    MediaService
-  ],
+  providers: [],
   bootstrap: [
     AppComponent
   ]
