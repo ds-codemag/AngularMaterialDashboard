@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { User } from 'firebase';
-import { Observable } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   login(login: string, password: string) {
-    this.fireAuth.auth.signInWithEmailAndPassword(login, password).then(value => {
+    this.fireAuth.auth.signInWithEmailAndPassword(login, password).then(() => {
       this.router.navigate(['']);
     }).catch(error => {
       this.snackBar.open(

@@ -1,12 +1,51 @@
 :host {
-  display: flex;
+  display: block;
+  position: relative;
+  width: 100vw;
   height: 100vh;
+}
+
+.mat-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px 60px 40px;
+  transform: translate(-50%, -50%);
+}
+
+.mat-card-title {
+  display: flex;
   flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
-  justify-content: center
+  margin-bottom: 30px;
+  text-align: center;
+
+  .logo {
+    display: block;
+    width: 70px;
+  }
+
+  .title {
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+
+    span {
+      display: block;
+      margin-top: 5px;
+      font-size: .75rem;
+      font-weight: 100;
+    }
+  }
 }
 
 .form {
   width: 100%;
-  max-width: 400px;
+
+  button {
+    display: block;
+    margin: 30px auto 0;
+  }
 }

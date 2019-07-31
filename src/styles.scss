@@ -79,9 +79,19 @@ $app-dark-theme: custom-dark-theme($app-dark-primary, $app-dark-accent, $app-dar
   @include angular-material-theme($app-dark-theme);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.spacer { flex: 1 1 auto; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: map-get($custom-light-theme-background, background)
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
 
 .form {
   &__item {
