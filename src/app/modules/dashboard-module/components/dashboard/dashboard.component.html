@@ -6,44 +6,29 @@
     </div>
 
     <mat-nav-list class="navigation__list">
-      <mat-list-item>
+      <mat-list-item routerLinkActive="active">
         <mat-icon matListIcon>dashboard</mat-icon>
-        <a matLine [routerLink]="''">Dashboard</a>
+        <a matLine [routerLink]="'/home'">Dashboard</a>
       </mat-list-item>
 
       <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header [collapsedHeight]="'56px'" [expandedHeight]="'56px'">
-            <mat-icon>web</mat-icon>
-            <span>Strony</span>
-          </mat-expansion-panel-header>
-
-          <mat-nav-list>
-            <mat-list-item>
-              <a matLine [routerLink]="'/pages'">Wszystkie strony</a>
-            </mat-list-item>
-          </mat-nav-list>
-        </mat-expansion-panel>
-      </mat-accordion>
-
-      <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel routerLinkActive="active">
           <mat-expansion-panel-header [collapsedHeight]="'56px'" [expandedHeight]="'56px'">
             <mat-icon>folder</mat-icon>
             <span>Media</span>
           </mat-expansion-panel-header>
 
           <mat-nav-list>
-            <mat-list-item>
+            <mat-list-item routerLinkActive="active">
               <a matLine [routerLink]="['/media', 'images']">Obrazy</a>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item routerLinkActive="active">
               <a matLine [routerLink]="['/media', 'audio']">Audio</a>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item routerLinkActive="active">
               <a matLine [routerLink]="['/media', 'video']">Wideo</a>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item routerLinkActive="active">
               <a matLine [routerLink]="['/media', 'files']">Pliki</a>
             </mat-list-item>
           </mat-nav-list>
@@ -54,6 +39,7 @@
 
   <mat-sidenav-content class="main__container">
     <mat-toolbar class="main__toolbar">
+
       <h2 class="main__title">{{title}}</h2>
 
       <span class="spacer"></span>

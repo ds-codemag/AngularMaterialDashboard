@@ -75,10 +75,6 @@ $custom-dark-theme-background: (
 
 $app-dark-theme: custom-dark-theme($app-dark-primary, $app-dark-accent, $app-dark-warn);
 
-.dark-theme {
-  @include angular-material-theme($app-dark-theme);
-}
-
 html, body {
   height: 100%;
 }
@@ -91,6 +87,35 @@ body {
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.navigation {
+  mat-list-item,
+  mat-expansion-panel-header {
+    transition: background .3s;
+  }
+
+  mat-list-item .mat-line {
+    transition: opacity .3s, font-weight .3s;
+  }
+
+  .mat-expansion-panel-header.mat-expanded:hover {
+    background: map-get($custom-light-theme-background, hover);
+  }
+
+  mat-list-item.active,
+  mat-expansion-panel.active mat-expansion-panel-header,
+  mat-expansion-panel.active mat-expansion-panel-header.mat-expanded {
+    background: map-get($custom-light-theme-background, hover);
+  }
+
+  mat-expansion-panel mat-list-item.active {
+    background: inherit;
+
+    .mat-line {
+      opacity: .6;
+    }
+  }
 }
 
 .form {
@@ -111,5 +136,29 @@ body {
 
   &--right-align {
     justify-content: flex-end;
+  }
+}
+
+.dark-theme {
+  @include angular-material-theme($app-dark-theme);
+
+  .navigation {
+    .mat-expansion-panel-header.mat-expanded:hover {
+        background: map-get($custom-dark-theme-background, hover);
+    }
+
+    mat-list-item.active,
+    mat-expansion-panel.active mat-expansion-panel-header,
+    mat-expansion-panel.active mat-expansion-panel-header.mat-expanded {
+      background: map-get($custom-dark-theme-background, hover);
+    }
+
+    mat-expansion-panel mat-list-item.active {
+      background: inherit;
+
+      .mat-line {
+        opacity: .75;
+      }
+    }
   }
 }

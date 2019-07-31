@@ -14,6 +14,7 @@ export class MediaComponent implements OnInit, OnDestroy {
 
   filesSubscription: Subscription;
   files = [];
+  view = 'grid';
 
   constructor(
     private mediaService: MediaService,
@@ -35,5 +36,9 @@ export class MediaComponent implements OnInit, OnDestroy {
 
   openDialog() {
     this.dialog.open(UploadDialogComponent);
+  }
+
+  switchView(view: string) {
+    this.view = view;
   }
 }

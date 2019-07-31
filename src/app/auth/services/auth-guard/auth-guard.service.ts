@@ -13,8 +13,8 @@ export class AuthGuardService implements CanActivate {
   ) { }
 
   canActivate(): Observable<boolean> {
-    return this.authService.authState.pipe(map(() => {
-      if (this.authService.authState) { return true; }
+    return this.authService.authState.pipe(map(user => {
+      if (user) { return true; }
       this.router.navigate(['/login']);
       return false;
     }));

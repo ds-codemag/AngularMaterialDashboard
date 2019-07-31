@@ -5,11 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AuthModule } from './auth/auth.module';
-import { MaterialModule } from './material.module';
 import { DashboardModule } from './modules/dashboard-module/dashboard.module';
 import { UserModule } from './modules/user-module/user.module';
 import { HomeModule } from './modules/home-module/home.module';
-import { PagesModule } from './modules/pages-module/pages.module';
 import { MediaModule } from './modules/media-module/media.module';
 
 // Components
@@ -38,7 +36,6 @@ const firebase = {
     DashboardModule,
     UserModule,
     HomeModule,
-    PagesModule,
     MediaModule
   ],
   providers: [],

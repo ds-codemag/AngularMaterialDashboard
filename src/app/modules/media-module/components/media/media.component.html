@@ -1,5 +1,19 @@
+<mat-toolbar>
+  <button mat-icon-button aria-label="Switch view"  [disabled]="view === 'grid'" (click)="switchView('grid')">
+    <mat-icon>view_module</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Switch view" [disabled]="view === 'list'" (click)="switchView('list')">
+    <mat-icon>view_list</mat-icon>
+  </button>
+</mat-toolbar>
+
 <button mat-fab color="primary" class="upload-btn" aria-label="Upload" (click)="openDialog()">
   <mat-icon>cloud_upload</mat-icon>
 </button>
 
-<app-media-grid-view *ngIf="files.length" [files]="files"></app-media-grid-view>
+<ng-container *ngIf="files.length" [ngSwitch]="view">
+  <app-media-grid-view *ngSwitchCase="'grid'" [files]="files"></app-media-grid-view>
+  <app-media-grid-view *ngSwitchCase="'list'" [files]="files"></app-media-grid-view>
+</ng-container>
+
+
