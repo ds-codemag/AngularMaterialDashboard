@@ -10,7 +10,7 @@ import { UploadService } from '../../services/upload/upload.service';
 export class UploadDialogComponent implements OnDestroy {
 
   text = 'Choose a file or drag it here';
-  selectedFiles: FileList;
+  selectedFile: File;
 
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
@@ -18,22 +18,22 @@ export class UploadDialogComponent implements OnDestroy {
   ) {}
 
   ngOnDestroy() {
-    this.selectedFiles = null;
+    this.selectedFile = null;
   }
 
   detectFiles(event: any) {
     if (event.target.files.length) {
-      this.selectedFiles = event.target.files;
-      this.text = this.selectedFiles.length === 1 ? this.selectedFiles[0].name : `Selected ${this.selectedFiles.length} files`;
+      this.selectedFile = event.target.files[0];
+      this.text = this.selectedFile.name;
     } else {
-      this.selectedFiles = null;
+      this.selectedFile = null;
       this.text = 'Choose a file or drag it here';
     }
   }
 
   upload() {
     this.uploadService.upload(
-      this.selectedFiles,
+      this.selectedFile,
       this.dialogRef
     );
   }

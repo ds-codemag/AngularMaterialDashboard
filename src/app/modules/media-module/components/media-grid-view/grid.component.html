@@ -1,7 +1,11 @@
 <div class="library container-fluid">
   <figure *ngFor="let file of files">
     <div>
-      <img src="{{file.url}}" alt="{{file.name}}">
+      <img *ngIf="file.type === 'image'" src="{{file.url}}" alt="{{file.name}}">
+      <video *ngIf="file.type === 'video'">
+        <source src="{{file.url}}" type="{{file.type+'/'+file.subtype}}">
+      </video>
+      <img *ngIf="file.type !== 'image' && file.type !== 'video'" src="./assets/images/file-placeholder.png" alt="">
     </div>
     <figcaption>{{file.name}}</figcaption>
   </figure>

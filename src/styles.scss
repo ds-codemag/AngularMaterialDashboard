@@ -139,6 +139,14 @@ body {
   }
 }
 
+snack-bar-container {
+  simple-snack-bar {
+    span {
+      white-space: pre-line;
+    }
+  }
+}
+
 .dark-theme {
   @include angular-material-theme($app-dark-theme);
 

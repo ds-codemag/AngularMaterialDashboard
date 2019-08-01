@@ -13,7 +13,7 @@
 
 <ng-container *ngIf="files.length" [ngSwitch]="view">
   <app-media-grid-view *ngSwitchCase="'grid'" [files]="files"></app-media-grid-view>
-  <app-media-grid-view *ngSwitchCase="'list'" [files]="files"></app-media-grid-view>
+  <app-media-list-view *ngSwitchCase="'list'" [files]="files"></app-media-list-view>
 </ng-container>
 
 

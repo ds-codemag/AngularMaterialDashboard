@@ -2,11 +2,12 @@ export class Upload {
 
   name: string;
   type: string;
+  subtype: string;
   size: number;
   url: string;
   date: string;
 
-  constructor(name: string, type: string, size: number, url: string) {
+  constructor(name: string, type: string, subtype: string, size: number, url: string) {
     const date = new Date();
     const day = ('0' + date.getDate()).slice(-2);
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -15,6 +16,7 @@ export class Upload {
 
     this.name = name;
     this.type = type;
+    this.subtype = subtype;
     this.size = size;
     this.url = url;
     this.date = `${day}-${month}-${year} ${time}`;
