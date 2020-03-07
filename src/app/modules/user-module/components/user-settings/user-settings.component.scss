@@ -34,16 +34,16 @@
       background: none !important;
     }
 
-    /deep/ .mat-content {
+    ::ng-deep .mat-content {
       display: inline;
     }
 
-    /deep/ .mat-expansion-indicator {
+    ::ng-deep .mat-expansion-indicator {
       display: none;
     }
   }
 
-  /deep/ .mat-expansion-panel-body {
+  ::ng-deep .mat-expansion-panel-body {
     padding: 0 16px;
   }
 }

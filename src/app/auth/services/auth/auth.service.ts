@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { User } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Injectable()
 export class AuthService {

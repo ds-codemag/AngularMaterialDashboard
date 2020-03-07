@@ -82,7 +82,7 @@
       }
     }
 
-    /deep/ mat-expansion-panel {
+    ::ng-deep mat-expansion-panel {
       box-shadow: none !important;
       margin: 0;
       background: transparent;

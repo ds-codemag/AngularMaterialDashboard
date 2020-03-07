@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaService } from '../../services/media/media.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
 import { filter, switchMap } from 'rxjs/operators';
 

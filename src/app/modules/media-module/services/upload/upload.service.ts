@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { UploadDialogComponent } from '../../components/upload-dialog/upload-dialog.component';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Upload } from '../../classes/upload.class';
 
 @Injectable()
