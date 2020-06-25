@@ -45,6 +45,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "@firebase/app",
+              "@firebase/database"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

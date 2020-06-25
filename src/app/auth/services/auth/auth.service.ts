@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   login(login: string, password: string) {
-    this.fireAuth.auth.signInWithEmailAndPassword(login, password).then(() => {
+    this.fireAuth.signInWithEmailAndPassword(login, password).then(() => {
       this.router.navigate(['']);
     }).catch(error => {
       this.snackBar.open(
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   logout() {
-    this.fireAuth.auth.signOut().then(() => {
+    this.fireAuth.signOut().then(() => {
       this.router.navigate(['/login']);
     });
   }
